@@ -36,6 +36,8 @@ function DgramStream(sock, opts) {
 inherits(DgramStream, Duplex);
 
 DgramStream.prototype._write = function (packet, enc, next) {
+  if (packet === null)
+    return this.end();
 
   if (!packet.to)
     return this.emit('error',
@@ -67,6 +69,10 @@ DgramStream.prototype.end = function () {
 
 DgramStream.prototype.address = function() {
   return this.sock.address();
+}
+
+DgramStream.prototype.close = function() {
+  return this.sock.close();
 }
 
 function splitAddr(addr) {
