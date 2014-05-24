@@ -11,6 +11,11 @@ listenStream.on('data', function(item) {
   console.log(item)
 })
 
+listenStream.on('end', function(item) {
+  console.log('listenStream closed')
+})
+
+
 listenSock.bind(1234)
 
 
@@ -19,7 +24,17 @@ var sendSock = dgram.createSocket('udp4')
 var sendStream = ds(sendSock)
 
 // send!
-sendStream.write({
-  to: {port:1234},
-  payload: 'abcdef'
+for (var i = 0; i < 100; i++) {
+  sendStream.write({
+    to: {port:1234},
+    payload: new Buffer('message #' + i),
+  })
+}
+sendStream.write(null);
+
+sendStream.on('end', function(item) {
+  console.log('sendStream closed')
+
+  // closing either stream or sock directly works.
+  listenStream.close()
 })
