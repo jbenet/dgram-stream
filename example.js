@@ -3,8 +3,8 @@ var dgram = require('dgram')
 var ds = require('./')
 
 // setup the receiver
-var listenSock = dgram.createSocket('udp4')
-var listenStream = ds(listenSock);
+var listenSocket = dgram.createSocket('udp4')
+var listenStream = ds(listenSocket);
 
 listenStream.on('data', function(item) {
   // receive!
@@ -15,13 +15,13 @@ listenStream.on('end', function(item) {
   console.log('listenStream closed')
 })
 
-
-listenSock.bind(1234)
+// bind on the socket or stream works
+listenStream.bind(1234)
 
 
 // setup the sender
-var sendSock = dgram.createSocket('udp4')
-var sendStream = ds(sendSock)
+var sendSocket = dgram.createSocket('udp4')
+var sendStream = ds(sendSocket)
 
 // send!
 for (var i = 0; i < 100; i++) {

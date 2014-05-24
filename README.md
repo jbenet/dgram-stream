@@ -33,20 +33,20 @@ var dgram = require('dgram')
 var ds = require('./')
 
 // setup the receiver
-var listenSock = dgram.createSocket('udp4')
-var listenStream = ds(listenSock);
+var listenSocket = dgram.createSocket('udp4')
+var listenStream = ds(listenSocket);
 
 listenStream.on('data', function(item) {
   // receive!
   console.log(item)
 })
 
-listenSock.bind(1234)
+listenSocket.bind(1234)
 
 
 // setup the sender
-var sendSock = dgram.createSocket('udp4')
-var sendStream = ds(sendSock)
+var sendSocket = dgram.createSocket('udp4')
+var sendStream = ds(sendSocket)
 
 // send!
 sendStream.write({

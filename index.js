@@ -75,6 +75,10 @@ DgramStream.prototype.close = function() {
   return this.sock.close();
 }
 
+DgramStream.prototype.bind = function() {
+  return this.sock.bind.apply(this.sock, arguments);
+}
+
 function splitAddr(addr) {
   var i = addr.lastIndexOf(':');
   return {
