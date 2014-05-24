@@ -1,0 +1,27 @@
+{
+  "name": "dgram-stream",
+  "version": "0.1.0",
+  "description": "udp messages as a stream of objects",
+  "main": "index.js",
+  "dependencies": {
+    "inherits": "~2.0.1",
+    "defaults": "~1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"no test yet :(\" && exit -1"
+  },
+  "keywords": [
+    "dgram",
+    "stream"
+  ],
+  "author": "Juan Benet <juan@benet.ai> (http://juan.benet.ai/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jbenet/dgram-stream.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jbenet/dgram-stream/issues"
+  }
+}
