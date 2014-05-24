@@ -21,7 +21,7 @@ Write "packets" like:
 
 Get "packets" like:
 
-```json
+```js
 { from: { address: '127.0.0.1', family: 'IPv4', port: 55230, size: 11 },
   payload: <Buffer 6d 79 20 64 61 74 61> }
 ```
