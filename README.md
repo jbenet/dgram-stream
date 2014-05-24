@@ -34,3 +34,4 @@ sendStream.write({
 })
 ```
 
+See [example.js](example.js).
