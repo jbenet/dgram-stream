@@ -1,5 +1,8 @@
 # dgram-stream - udp messages a duplex stream
 
+> What!? a dgram stream? You're crazy.
+
+Yep, I am.
 
 ## Usage
 
