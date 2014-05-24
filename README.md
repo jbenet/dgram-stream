@@ -1,4 +1,4 @@
-# dgram-stream - udp messages a duplex stream
+# dgram-stream - udp as a duplex stream
 
 > What!? a dgram stream? You're crazy.
 
@@ -9,6 +9,24 @@ Yep, I am.
 ```
 npm install dgram-stream
 ```
+
+Write "packets" like:
+
+```js
+{
+  "to": {port: 1234}
+  "payload": new Buffer("my data"),
+}
+```
+
+Get "packets" like:
+
+```json
+{ from: { address: '127.0.0.1', family: 'IPv4', port: 55230, size: 11 },
+  payload: <Buffer 6d 79 20 64 61 74 61> }
+```
+
+Example:
 
 ```js
 var dgram = require('dgram')
@@ -37,4 +55,4 @@ sendStream.write({
 })
 ```
 
-See [example.js](example.js).
+More at [example.js](example.js).
