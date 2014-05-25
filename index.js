@@ -7,7 +7,7 @@ module.exports = DgramStream;
 
 function DgramStream(sock, opts) {
   if (!(this instanceof DgramStream))
-    return new DgramStream(sock);
+    return new DgramStream(sock, opts);
 
   if (!sock)
     throw new Error("dgram-stream requires 'socket' argument.")
