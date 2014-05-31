@@ -1,13 +1,15 @@
 {
   "name": "dgram-stream",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "udp messages as a stream of objects",
   "main": "index.js",
   "dependencies": {
     "inherits": "~2.0.1",
     "defaults": "~1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "through2": "~0.4.2"
+  },
   "scripts": {
     "test": "echo \"no test yet :(\" && exit -1"
   },

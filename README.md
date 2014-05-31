@@ -30,29 +30,30 @@ Example:
 
 ```js
 var dgram = require('dgram')
-var ds = require('./')
+var dgrams = require('dgram-stream')
 
-// setup the receiver
-var listenSocket = dgram.createSocket('udp4')
-var listenStream = ds(listenSocket);
+// setup two (duplex) streams. use type or socket.
+var one = dgrams('udp4')
+var two = dgrams(dgram.createSocket('udp4'))
 
-listenStream.on('data', function(item) {
-  // receive!
-  console.log(item)
+// bind to ports. both ways work the same.
+one.sock.bind(1234)
+two.bind(1235)
+
+// data handlers
+one.on('data', function(item) {
+  console.log('one got: ' + item)
 })
 
-listenSocket.bind(1234)
-
-
-// setup the sender
-var sendSocket = dgram.createSocket('udp4')
-var sendStream = ds(sendSocket)
-
-// send!
-sendStream.write({
-  to: {port:1234},
-  payload: 'abcdef'
+two.on('data', function(item) {
+  console.log('two got: ' + item)
 })
+
+// try it out!
+one.write({ to: { port:1235 }, payload: 'beep' })
+two.write({ to: { port:1234 }, payload: 'boop' })
 ```
 
-More at [example.js](example.js).
+More at:
+- [example1.js](example1.js) - simple example
+- [example2.js](example2.js) - `stdin -> udp send -> udp recv -> stdout`
