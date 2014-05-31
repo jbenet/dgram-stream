@@ -1,5 +1,6 @@
 var inherits = require('inherits');
 var defaults = require('defaults');
+var dgram = require('dgram');
 var Duplex = require('stream').Duplex
           || require('readable-stream').Duplex;
 
@@ -11,6 +12,9 @@ function DgramStream(sock, opts) {
 
   if (!sock)
     throw new Error("dgram-stream requires 'socket' argument.")
+
+  if (sock === 'udp4' || sock === 'udp6')
+    sock = dgram.createSocket(sock)
 
   var self = this;
 
