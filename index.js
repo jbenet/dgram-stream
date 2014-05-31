@@ -25,14 +25,14 @@ function DgramStream(sock, opts) {
   this.sock = sock;
 
   this.sock.on('message', function(msg, rinfo) {
-    self.emit('data', {
+    self.push({
       from: rinfo,
       payload: msg,
     })
   })
 
   this.sock.on('close', function() {
-    self.emit('end')
+    self.push(null)
   })
 
 }
